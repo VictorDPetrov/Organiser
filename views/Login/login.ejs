@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-con" href="/images/jarLogo.png">
+    <link rel="stylesheet" href="/Style/login.css">
+    <title>Вход &#x2022; Jar's Organiser</title>
+</head>
+
+<body>
+    <div class="login-form">
+        <form action="/" method="POST">
+            <img src="/images/jarLogo.png" alt="Logo" style="width: 100px; margin-bottom: 20px;">
+            <h1>Вход</h1>
+            <p>Потребителско име</p> <br>
+            <input type="text" name="username" required placeholder="Потр. име"
+                oninvalid="this.setCustomValidity('Моля въведете потребителско име!')"
+                oninput="setCustomValidity('')">
+
+            <p>Парола</p> <br>
+            <input type="password" name="pass" placeholder="Парола" required
+                oninvalid="this.setCustomValidity('Моля въведете парола!')" oninput="setCustomValidity('')">
+
+            <br>
+            <input type="submit" value="Вход">
+        </form>
+    </div>
+</body>
+
+</html>
