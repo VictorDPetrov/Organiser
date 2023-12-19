@@ -40,12 +40,14 @@ router.post('/', async (req, res) => {
   
     let fullDate = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
 
-    database.database.query('SELECT username FROM users WHERE username = ?', req.session.username, function (selectErr, selectResult) {
+    database.database.query('SELECT firstName, username FROM users WHERE username = ?', req.session.username, function (selectErr, selectResult) {
         if (selectErr) {
             throw selectErr;
         }
         else {
-            database.database.query("INSERT INTO tasks (taskTitle, taskDescription, taskUser, taskDate, taskStatus) VALUES (?, ?, ?, ?, ?)", [taskTitle, taskDescription, Object.values[selectResult[0]], fullDate, "Добавено"], function (insertErr, insertResult) {
+            const user = selectResult[0].firstName;
+            
+            database.database.query("INSERT INTO tasks (taskTitle, taskDescription, taskUser, taskDate, taskStatus) VALUES (?, ?, ?, ?, ?)", [taskTitle, taskDescription, user, fullDate, "Добавено"], function (insertErr, insertResult) {
                 if (insertErr) {
                     throw insertErr;
                 }

@@ -11,6 +11,10 @@ const loginRoute = require('./routes/login');
 const homeRoute = require('./routes/home');
 const logoutRoute = require('./routes/logout');
 const addTaskRoute = require('./routes/Add/addTask');
+const moveTaskRoute = require('./routes/Move/moveTask');
+const viewTaskRoute = require('./routes/Details/viewTask');
+const editTaskRoute = require('./routes/Details/editTask');
+const deleteTaskRoute = require('./routes/Details/deleteTask');
 
 app.use(express.static('views'));
 app.use(express.static('controller'));
@@ -43,6 +47,10 @@ app.use('/', loginRoute);
 app.use('/home', homeRoute);
 app.use('/logout', logoutRoute);
 app.use('/addTask', addTaskRoute);
+app.use('/moveTask', moveTaskRoute);
+app.use('/viewTask', viewTaskRoute);
+app.use('/editTask', editTaskRoute);
+app.use('/deleteTask', deleteTaskRoute);
 
 app.listen(port, (req, res) => {
     console.log(`Organiser is on port ${port}`);
