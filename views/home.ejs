@@ -1,1 +1,71 @@
-<a class="nav-link" href="/logout">Изход</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-con" href="/images/jarLogo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Начало &#x2022; Jar's Organiser</title>
+    <style>
+        .btn-mobile {
+            width: 100%;
+        }
+
+        .btn-margin {
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 1000px) {
+            .btn-mobile {
+                width: auto; /* Reset width to default after 1000px */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Задачи</h1>
+
+        <a class="btn btn-primary btn-mobile btn-margin" href="/addTask">Добави задача</a>
+        <a class="btn btn-danger btn-mobile btn-margin" href="/logout">Изход</a>
+
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col" style="display: none">ID</th>
+                    <th scope="col">Задача</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Потребител</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Функции</th>
+                </tr>
+            </thead>
+            <tbody id="taskTableBody">
+                <% for(var task of rows) { %>
+                    <tr class="text-center">
+                        <td style="display:none" data-label="ID"><%= task.id %></td>
+                        <td data-label="Заглавие" class="text-center align-middle"><%= task.taskTitle %></td>
+                        <td data-label="Описание" class="text-center align-middle"><%= task.taskDescription %></td>
+                        <td data-label="Възложено от" class="text-center align-middle"><%= task.taskUser %></td>
+                        <td data-label="Дата" class="text-center align-middle"><%= moment(task.toDateAndTime).format('DD.MM.YYYYг. - HH:mmч.') %></td>
+                        <td data-label="Функции">
+                            <a href="/viewDetails?id=<%= task.id %>" class="btn btn-primary btn-mobile btn-margin">Детайли</a>
+                            <a href="/editDetails?id=<%= task.id %>" class="btn btn-primary btn-mobile btn-margin">Редактиране</a>
+                            <a href="/moveEvent?id=<%= task.id %>" class="btn btn-danger btn-mobile btn-margin" onclick="return confirm('Сигурни ли сте че искате да приключите задачата?')">Приключи</a>
+                        </td>
+                    </tr>
+                <% }; %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

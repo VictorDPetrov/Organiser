@@ -10,6 +10,7 @@ const cookieExpires = 1000 * 60 * 60;
 const loginRoute = require('./routes/login');
 const homeRoute = require('./routes/home');
 const logoutRoute = require('./routes/logout');
+const addTaskRoute = require('./routes/Add/addTask');
 
 app.use(express.static('views'));
 app.use(express.static('controller'));
@@ -41,6 +42,7 @@ app.use(function (req, res, next) {
 app.use('/', loginRoute);
 app.use('/home', homeRoute);
 app.use('/logout', logoutRoute);
+app.use('/addTask', addTaskRoute);
 
 app.listen(port, (req, res) => {
     console.log(`Organiser is on port ${port}`);

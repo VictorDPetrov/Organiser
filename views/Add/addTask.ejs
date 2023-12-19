@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-con" href="/images/jarLogo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Добави задача &#x2022; Jar's Organiser</title>
+    <style>
+        .btn-mobile {
+            width: 100%;
+        }
+
+        .btn-margin {
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 1000px) {
+            .btn-mobile {
+                width: auto; /* Reset width to default after 1000px */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Добави задача</h1>
+
+            <form action="/addTask" method="POST">
+                <div class="mb-3">
+                    <label for="taskTitle" class="form-label">Задача</label>
+                    <input type="text" class="form-control" id="taskTitle" name="taskTitle"
+                        placeholder="Трите имена на заявител" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="taskDescription" class="form-label">Описание</label>
+                    <textarea class="form-control" id="taskDescription" name="taskDescription"
+                        rows="5"></textarea>
+                </div>
+
+                <button type="submit" class="btn d-block btn-primary"
+                    onclick="return confirm('Сигурни ли сте че искате да добавите тази задача?')">Добавяне</button>
+            </form>
+            <br>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
